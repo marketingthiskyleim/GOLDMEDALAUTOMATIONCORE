@@ -1,0 +1,17 @@
+# Auto Data Collection and Processing Workflow
+
+name: Auto Data Collection and Processing  
+
+on:  
+  workflow_dispatch:
+
+jobs:  
+  collect-data:  
+    runs-on: ubuntu-latest  
+    steps:  
+    - name: Check out repository  
+      uses: actions/checkout@v2  
+    - name: Get current date and time  
+      run: echo "Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted): $(date -u '+%Y-%m-%d %H:%M:%S')"  
+    - name: Log user  
+      run: echo "Current User's Login: ${{ github.actor }}"
