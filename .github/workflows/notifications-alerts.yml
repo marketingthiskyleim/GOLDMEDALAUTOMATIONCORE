@@ -1,0 +1,20 @@
+name: Notifications and Alerts
+
+description: This workflow automates notifications and alerts for various events.
+
+event: push
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Notification
+        run: |
+          echo 'Notification: A new push has been made to the repository!'
+
+      - name: Alert on Slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          slack-token: ${{ secrets.SLACK_TOKEN }}
+          channel: '#alerts'
+          text: 'Alert: A new push has been made to the repository!'
